@@ -2,4 +2,8 @@
 display: flex;
 justify-content: center;
 align-items: center;
+max-width: 1280px;
+margin: 0 auto;
+padding: 60px 0 60px;
+border-top: 1px rgba(33, 33, 33, 0.4) solid;
 }
