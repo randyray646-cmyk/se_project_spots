@@ -88,16 +88,5 @@
 .modal__submit-button:hover {
   opacity: 0.7;
 }
-@media screen and (max-width: 627px) {
-  .modal__submit-button{
-    max-width: none;
-  }
- .modal__container {
-   padding: 24px 16px;
-   margin: 0 16px;
- }
- .modal__title {
-   font: 500 24px/1 'Poppins', sans-serif;
- }
-}
+
 
