@@ -33,13 +33,13 @@ function closeModal(modal) {
 editProfileForm.addEventListener('submit', function(event) {
     event.preventDefault();
     profileName.textContent = editProfileNameInput.value;
-    profileDesription.textContent = editProfileDescriptionInput.value;
+    profileDescription.textContent = editProfileDescriptionInput.value;
     closeModal(editProfileModal);
 });
 
 editProfileBtn.addEventListener('click', function() {
     editProfileNameInput.value = profileName.textContent;
-    editProfileDescriptionInput.value = profileDesription.textContent;
+    editProfileDescriptionInput.value = profileDescription.textContent;
     openModal(editProfileModal);
 });
 
