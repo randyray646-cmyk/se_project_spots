@@ -7,7 +7,7 @@ const newPostModal = document.querySelector('#new-post-modal');
 const newPostCloseBtn = newPostModal.querySelector('.modal__close-button');
 
 const profileName = document.querySelector('.profile__name');
-const profileDesription = document.querySelector('.profile__description');
+const profileDescription = document.querySelector('.profile__description');
 
 const editProfileForm = editProfileModal.querySelector('.modal__form');
 const editProfileNameInput = editProfileModal.querySelector('#profile-name-input');
@@ -16,6 +16,11 @@ const editProfileDescriptionInput = editProfileModal.querySelector('#profile-des
 const editNewPostForm = newPostModal.querySelector('.modal__form');
 const editNewPostCaptionInput = newPostModal.querySelector('#card-caption-input');
 const editNewPostLinkInput = newPostModal.querySelector('#card-image-input');
+
+function updateProfileInfo() {
+  profileName.textContent = editProfileNameInput.value;
+  profileDescription.textContent = editProfileDescriptionInput.value;
+}
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
@@ -54,8 +59,7 @@ newPostCloseBtn.addEventListener('click', function() {
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  profileName.textContent = editProfileNameInput.value;
-  profileDesription.textContent = editProfileDescriptionInput.value;
+  updateProfileInfo();
   closeModal(editProfileModal);
 
   console.log('Profile form submitted');
