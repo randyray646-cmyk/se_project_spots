@@ -17,30 +17,38 @@ const editNewPostForm = newPostModal.querySelector('.modal__form');
 const editNewPostCaptionInput = newPostModal.querySelector('#card-caption-input');
 const editNewPostLinkInput = newPostModal.querySelector('#card-image-input');
 
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+}
+
 editProfileForm.addEventListener('submit', function(event) {
     event.preventDefault();
     profileName.textContent = editProfileNameInput.value;
     profileDesription.textContent = editProfileDescriptionInput.value;
-    editProfileModal.classList.remove('modal_is-opened');
+    closeModal(editProfileModal);
 });
 
 editProfileBtn.addEventListener('click', function() {
     editProfileNameInput.value = profileName.textContent;
     editProfileDescriptionInput.value = profileDesription.textContent;
-    editProfileModal.classList.add('modal_is-opened');
+    openModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener('click', function() {
-    editProfileModal.classList.remove('modal_is-opened');
+    closeModal(editProfileModal);
 });
 
 
 newPostBtn.addEventListener('click', function() {
-    newPostModal.classList.add('modal_is-opened');
+    openModal(newPostModal);
 });
 
 newPostCloseBtn.addEventListener('click', function() {
-    newPostModal.classList.remove('modal_is-opened');
+    closeModal(newPostModal);
 });
 
 function handleProfileFormSubmit(evt) {
@@ -48,7 +56,7 @@ function handleProfileFormSubmit(evt) {
 
   profileName.textContent = editProfileNameInput.value;
   profileDesription.textContent = editProfileDescriptionInput.value;
-  editProfileModal.classList.remove('modal_is-opened');
+  closeModal(editProfileModal);
 
   console.log('Profile form submitted');
 }
@@ -60,7 +68,7 @@ function handleAddCardSubmit(evt) {
 
   console.log(editNewPostCaptionInput.value);
   console.log(editNewPostLinkInput.value);
-  newPostModal.classList.remove('modal_is-opened');
+  closeModal(newPostModal);
 }
 
 editNewPostForm.addEventListener('submit', handleAddCardSubmit);

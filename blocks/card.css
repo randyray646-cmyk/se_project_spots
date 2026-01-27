@@ -43,14 +43,14 @@ max-width: 100%;
 }
 
 .card__like-button:hover {
-  opacity: 0.8%;
+  opacity: 0.8;
   cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {
   .card__title {
     max-width: 235px;
-    font: 500 20px/1.2 'Poppins', sans-serif;
+
     }
   .card__image {
     height: 288px;
