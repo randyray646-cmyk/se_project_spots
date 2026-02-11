@@ -1,5 +1,9 @@
 const initialCards = [
   {
+    name: "Golden Gate Bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg"
+  },
+  {
     name: "Val Thorens",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg"
   },
@@ -25,10 +29,6 @@ const initialCards = [
   }
 ];
 
-initialCards.forEach(function(card) {
-  console.log(card.name);
-});
-
 const editProfileBtn = document.querySelector('.profile__edit-button');
 const editProfileModal = document.querySelector('#edit-profile-modal');
 const editProfileCloseBtn = editProfileModal.querySelector('.modal__close-button');
@@ -48,6 +48,46 @@ const editNewPostForm = newPostModal.querySelector('.modal__form');
 const editNewPostCaptionInput = newPostModal.querySelector('#card-caption-input');
 const editNewPostLinkInput = newPostModal.querySelector('#card-image-input');
 
+const previewModal = document.querySelector("#preview-modal");
+const previewImage = previewModal.querySelector(".modal__preview-image");
+const previewCaption = previewModal.querySelector(".modal__caption");
+const previewCloseButton = previewModal.querySelector(".modal__close-button");
+
+const cardTemplate = document.querySelector("#card-template");
+const cardsList = document.querySelector(".cards__list");
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.content
+  .querySelector(".card")
+  .cloneNode(true);
+
+  const cardTitle = cardElement.querySelector(".card__title");
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardLikedButton = cardElement.querySelector(".card__like-button");
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
+
+  cardTitle.textContent = data.name;
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
+
+  cardLikedButton.addEventListener('click',() => {
+    cardLikedButton.classList.toggle("card__like-button_active");
+  });
+
+  cardDeleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
+  cardImage.addEventListener("click", () => {
+    previewImage.src = data.link;
+    previewImage.alt = data.name;
+    previewCaption.textContent = data.name;
+    openModal(previewModal);
+  });
+
+  return cardElement;
+}
+
 function updateProfileInfo() {
   profileName.textContent = editProfileNameInput.value;
   profileDescription.textContent = editProfileDescriptionInput.value;
@@ -60,13 +100,6 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
-
-editProfileForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    profileName.textContent = editProfileNameInput.value;
-    profileDescription.textContent = editProfileDescriptionInput.value;
-    closeModal(editProfileModal);
-});
 
 editProfileBtn.addEventListener('click', function() {
     editProfileNameInput.value = profileName.textContent;
@@ -87,13 +120,16 @@ newPostCloseBtn.addEventListener('click', function() {
     closeModal(newPostModal);
 });
 
+previewCloseButton.addEventListener("click", () => {
+  closeModal(previewModal);
+});
+
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   updateProfileInfo();
   closeModal(editProfileModal);
-
-  console.log('Profile form submitted');
 }
 
 editProfileForm.addEventListener('submit', handleProfileFormSubmit);
@@ -101,9 +137,21 @@ editProfileForm.addEventListener('submit', handleProfileFormSubmit);
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
 
-  console.log(editNewPostCaptionInput.value);
-  console.log(editNewPostLinkInput.value);
+  const cardData = {
+    name: editNewPostCaptionInput.value,
+    link: editNewPostLinkInput.value
+  };
+
+  const cardElement = getCardElement(cardData);
+  cardsList.prepend(cardElement);
+
+  evt.target.reset();
   closeModal(newPostModal);
 }
 
 editNewPostForm.addEventListener('submit', handleAddCardSubmit);
+
+initialCards.forEach(function(item) {
+  const cardElement = getCardElement(item);
+  cardsList.append(cardElement);
+});
