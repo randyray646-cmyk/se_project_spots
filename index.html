@@ -13,7 +13,7 @@
 <body>
   <div class="page">
     <header class="header">
-      <img src="./images/spots-images/Logo.svg" alt="Spots__logo" class="header__logo">
+      <img src="./images/spots-images/Logo.svg" alt="Spots Logo" class="header__logo">
     </header>
     <main class="content">
       <section class="profile page__section">
@@ -34,7 +34,7 @@
           <template id="card-template">
             <li class="card">
               <button class="card__delete-button" type="button"></button>
-              <img src="#" alt="card__image" class="card__image">
+              <img src="#" alt="" class="card__image">
               <div class="card__content">
                 <h2 class="card__title"></h2>
                 <button class="card__like-button" type="button"></button>
@@ -57,14 +57,16 @@
             <input
              id="profile-name-input"
              type="text" class="modal__input"
-             placeholder="Type your name">
+             placeholder="Type your name"
+             required>
           </label>
           <label for="profile-description-input" class="modal__label">
             Description
             <input
              id="profile-description-input"
              type="text" class="modal__input"
-             placeholder="Describe yourself">
+             placeholder="Describe yourself"
+             required>
           </label>
           <button class="modal__submit-button" type="submit">Save</button>
         </form>
@@ -80,7 +82,8 @@
             <input
              id="card-image-input"
              type="url" class="modal__input"
-             placeholder="Paste a link to the picture">
+             placeholder="Paste a link to the picture"
+             required>
           </label>
           <label for="card-caption-input" class="modal__label">
             Caption
@@ -96,7 +99,7 @@
     <div class="modal" id="preview-modal">
       <div class="modal__image-container">
         <button class="modal__close-button modal__close-button_type_preview" type="button"></button>
-        <img src="https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg" alt="preview" class="modal__preview-image">
+        <img src="" alt="" class="modal__preview-image">
         <p class="modal__caption">Golden Gate Bridge</p>
       </div>
     </div>

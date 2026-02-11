@@ -148,6 +148,14 @@ transition: visibility 0.3s, opacity 0.3s ease-in;
   right: 12px;
  }
 
+ .modal__caption {
+   font-size: 16px;
+ }
+
+ .modal__preview-image {
+   max-width: 90vw;
+ }
+
 .modal__title {
   font-size: 20px;
  }

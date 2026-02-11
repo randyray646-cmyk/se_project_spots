@@ -20,7 +20,12 @@ position: relative;
   border-radius: 8px;
   object-fit: cover;
   display: block;
+  cursor: pointer;
   margin-bottom: 12px;
+}
+
+.card__image:hover {
+  opacity: 0.95;
 }
 
 .card__delete-button {
@@ -53,7 +58,7 @@ position: relative;
   width: 23px;
   height: 20px;
   border: none;
-  opacity: 40%;
+  opacity: 0.4;
   cursor: pointer;
   background-repeat: no-repeat;
   background-position: center;
@@ -62,12 +67,11 @@ position: relative;
 
 .card__like-button:hover {
   opacity: 0.4;
-  cursor: pointer;
 }
 
 .card__like-button_active {
   background-image: url("../images/HeartLiked.svg");
-  opacity: 100%;
+  opacity: 1;
 }
 
 .card__like-button_active:hover {

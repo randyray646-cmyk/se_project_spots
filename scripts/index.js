@@ -44,9 +44,9 @@ const editProfileForm = editProfileModal.querySelector('.modal__form');
 const editProfileNameInput = editProfileModal.querySelector('#profile-name-input');
 const editProfileDescriptionInput = editProfileModal.querySelector('#profile-description-input');
 
-const editNewPostForm = newPostModal.querySelector('.modal__form');
-const editNewPostCaptionInput = newPostModal.querySelector('#card-caption-input');
-const editNewPostLinkInput = newPostModal.querySelector('#card-image-input');
+const NewPostForm = newPostModal.querySelector('.modal__form');
+const NewPostCaptionInput = newPostModal.querySelector('#card-caption-input');
+const NewPostLinkInput = newPostModal.querySelector('#card-image-input');
 
 const previewModal = document.querySelector("#preview-modal");
 const previewImage = previewModal.querySelector(".modal__preview-image");
@@ -137,19 +137,21 @@ editProfileForm.addEventListener('submit', handleProfileFormSubmit);
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
 
-  const cardData = {
-    name: editNewPostCaptionInput.value,
-    link: editNewPostLinkInput.value
-  };
+  const caption = NewPostCaptionInput.value.trim();
+  const link = NewPostLinkInput.value.trim();
 
+  if (!caption || !link) {
+    return;
+  }
+
+  const cardData = { name: caption, link: link };
   const cardElement = getCardElement(cardData);
   cardsList.prepend(cardElement);
-
-  evt.target.reset();
   closeModal(newPostModal);
+  NewPostForm.reset();
 }
 
-editNewPostForm.addEventListener('submit', handleAddCardSubmit);
+NewPostForm.addEventListener('submit', handleAddCardSubmit);
 
 initialCards.forEach(function(item) {
   const cardElement = getCardElement(item);
