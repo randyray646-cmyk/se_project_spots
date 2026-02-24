@@ -29,5 +29,8 @@ This project is made so all the elements are displayed correctly on popular scre
 * [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
 
 ## Project Pitch Video
-[Link to Pitch Video](https://drive.google.com/file/d/1YohFHH5r49Hk0PQHPCAbTWiOPuqDPoqj/view?usp=sharing)
-Where I describe my project and some challenges I faced while building it.
+Check out these videos, where I describe my project
+and some challenges I faced while building it:
+1. [First Pitch Video](https://drive.google.com/file/d/1YohFHH5r49Hk0PQHPCAbTWiOPuqDPoqj/view?usp=sharing)
+2. [Second Pitch Video](https://www.loom.com/share/203efb23923a45df82201853075854f4)
+
