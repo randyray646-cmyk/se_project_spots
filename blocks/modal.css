@@ -92,10 +92,14 @@
 
 
 .modal__input-error {
-  display: block;
+  display: none;
   margin: 8px 0 0;
   font: 500 14px/1 'Poppins', sans-serif;
   color: #FF0000;
+}
+
+.modal__error_visible {
+  display: block;
 }
 
 .modal__input::placeholder {
