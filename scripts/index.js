@@ -125,6 +125,9 @@ modalList.forEach((modal) => {
 
 const handleEscClose = (evt) => {
   if (evt.key === "Escape") {
+    evt.preventDefault();
+    evt.stopPropagation();
+
     const openedModal = document.querySelector(".modal_is-opened");
     if (openedModal) {
       closeModal(openedModal);
@@ -136,7 +139,7 @@ const handleEscClose = (evt) => {
 editProfileBtn.addEventListener('click', function() {
     editProfileNameInput.value = profileName.textContent;
     editProfileDescriptionInput.value = profileDescription.textContent;
-    resetValidation(editProfileForm, Array.from(editProfileForm.querySelectorAll(".modal__input")), editProfileForm.querySelector(".modal__submit-button"));
+    resetValidation(editProfileForm, Array.from(editProfileForm.querySelectorAll(".modal__input")), editProfileForm.querySelector(".modal__submit-button"), settings);
     openModal(editProfileModal);
 });
 
@@ -182,7 +185,7 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
   newPostForm.reset();
   disableSubmitButton(newPostSubmitButton,settings);
-  resetValidation(newPostForm, [newPostCaptionInput, newPostLinkInput], settings)
+  resetValidation(newPostForm, [newPostCaptionInput, newPostLinkInput], newPostSubmitButton, settings)
 
   closeModal(newPostModal);
 }
