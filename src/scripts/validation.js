@@ -1,4 +1,4 @@
-const settings = {
+export const settings= {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
@@ -7,7 +7,7 @@ const settings = {
   errorClass: "modal__error_visible"
 };
 
-const showInputError = (formElement, inputElement, errorMessage, config) => {
+export const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
   inputElement.classList.add(config.inputErrorClass);
@@ -15,7 +15,7 @@ const showInputError = (formElement, inputElement, errorMessage, config) => {
   errorElement.classList.add(config.errorClass);
 };
 
-const hideInputError = (formElement, inputElement, config) => {
+export const hideInputError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
   inputElement.classList.remove(config.inputErrorClass);
@@ -51,12 +51,12 @@ const toggleButtonState = (inputList, buttonElement, config) => {
   }
 };
 
-const disableSubmitButton = (buttonElement, config) => {
+export const disableSubmitButton = (buttonElement, config) => {
   buttonElement.setAttribute("disabled", true);
   buttonElement.classList.add(config.inactiveButtonClass);
 };
 
-const resetValidation = (formElement, inputList, submitButton, config) => {
+export const resetValidation = (formElement, inputList, submitButton, config) => {
   inputList.forEach((inputElement) => {
     hideInputError(formElement, inputElement, config);
   });
@@ -64,7 +64,7 @@ const resetValidation = (formElement, inputList, submitButton, config) => {
   disableSubmitButton(submitButton, config);
 };
 
-const clearValidation = (formElement, config) => {
+export const clearValidation = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
@@ -91,7 +91,7 @@ const setEventListeners = (formElement, config) => {
 
 };
 
-const enableValidation = (config) => {
+export const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((formElement) => {
@@ -101,5 +101,3 @@ const enableValidation = (config) => {
     setEventListeners(formElement, config);
   });
 };
-
-enableValidation(settings);
