@@ -8,6 +8,7 @@ import {
 
 import Api from "../utils/Api.js";
 
+console.log(settings);
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -63,27 +64,30 @@ api
 //   },
 // ];
 
-const editProfileBtn = document.querySelector(".profile__edit-button");
-const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileCloseBtn = editProfileModal.querySelector(
-  ".modal__close-button",
-);
-
 const newPostBtn = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
-const avatarModalBtn = document.querySelector(".profile__avatar-btn");
+const avatarModalBtn = document.querySelector(".profile__avatar-overlay");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-button");
 
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const profileAvatar = document.querySelector(".profile__avatar");
 
+const editProfileBtn = document.querySelector(".profile__edit-button");
+const editProfileModal = document.querySelector("#edit-profile-modal");
+const editProfileCloseBtn = editProfileModal.querySelector(
+  ".modal__close-button",
+);
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input",
 );
 const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input",
+);
+
+const editProfileSubmitButton = editProfileForm.querySelector(
+  ".modal__submit-button",
 );
 
 const newPostForm = newPostModal.querySelector(".modal__form");
@@ -111,7 +115,9 @@ const cardsList = document.querySelector(".cards__list");
 
 const deleteForm = deleteModal.querySelector(".modal__form");
 const deleteCloseButton = deleteModal.querySelector(".modal__close-button");
-const deleteCancelButton = deleteModal.querySelector(".modal__submit-button_type_cancel");
+const deleteCancelButton = deleteModal.querySelector(
+  ".modal__submit-button_type_cancel",
+);
 
 // Variables to store the selected card and its ID for deletion
 let selectedCard;
@@ -215,15 +221,17 @@ const handleEscClose = (evt) => {
   }
 };
 
-editProfileBtn.addEventListener("click", function () {
+editProfileBtn.addEventListener("click", () => {
   editProfileNameInput.value = profileName.textContent;
   editProfileDescriptionInput.value = profileDescription.textContent;
+
   resetValidation(
     editProfileForm,
-    Array.from(editProfileForm.querySelectorAll(".modal__input")),
-    editProfileForm.querySelector(".modal__submit-button"),
-    settings,
+    [editProfileNameInput, editProfileDescriptionInput],
+    editProfileSubmitButton,
+    settings
   );
+
   openModal(editProfileModal);
 });
 
@@ -237,6 +245,7 @@ function handleAvatarFormSubmit(evt) {
     .then((updatedUserInfo) => {
       profileAvatar.src = updatedUserInfo.avatar;
 
+      disableSubmitButton(avatarSubmitButton, settings);
       avatarForm.reset();
       closeModal(avatarModal);
     })
@@ -249,6 +258,7 @@ function handleAvatarFormSubmit(evt) {
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
 
+  const submitButton = evt.submitter;
   const originalText = submitButton.textContent;
   submitButton.textContent = "Deleting...";
 
@@ -280,7 +290,7 @@ previewCloseButton.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
-avatarModalBtn.addEventListener("click", function () {
+avatarModalBtn.addEventListener("click", () => {
   openModal(avatarModal);
 });
 

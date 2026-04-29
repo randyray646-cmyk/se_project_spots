@@ -230,12 +230,19 @@
   }
 
   .modal__title {
-    font-size: 20px;
+    font:
+      500 20px/1.2 "Poppins",
+      sans-serif;
+    text-align: center;
+    white-space: wrap;
   }
   .modal__input {
     font-size: 16px;
   }
   .modal__submit-button {
     max-width: none;
+  }
+  .modal__form_type_delete {
+    flex-direction: column;
   }
 }
