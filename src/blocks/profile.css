@@ -7,10 +7,72 @@
 }
 
 .profile__avatar {
-  margin-right: 20px;
-  border-radius: 8px;
+  display: block;
   width: 190px;
   height: 190px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.profile__avatar-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  padding-bottom: 12px;
+  gap: 8px;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  border: none;
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover .profile__avatar-overlay {
+  opacity: 1;
+}
+
+.profile__avatar-container {
+  position: relative;
+  width: fit-content;
+}
+
+/* .profile__avatar-btn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+  visibility: hidden;
+  cursor: pointer;
+} */
+
+/* .profile__avatar-container:hover .profile__avatar-btn {
+  visibility: visible;
+}
+
+.profile__avatar-btn::after {
+  content: "Edit Avatar";
+} */
+
+.profile__avatar-text {
+  color: white;
+  font-size: 14px;
+  bottom: auto;
+}
+
+.profile__avatar-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .profile__column {
@@ -20,8 +82,10 @@
 
 .profile__name {
   margin: 0 0 12px;
-  font: 500 32px/1 'Poppins', sans-serif;
-   display: -webkit-box;
+  font:
+    500 32px/1 "Poppins",
+    sans-serif;
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
@@ -31,9 +95,11 @@
 
 .profile__description {
   margin: 0;
-  font: 500 16px/1 'Poppins', sans-serif;
+  font:
+    500 16px/1 "Poppins",
+    sans-serif;
   color: rgba(21, 21, 21, 0.7);
-   display: -webkit-box;
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
@@ -59,7 +125,7 @@
 .profile__add-button {
   margin-left: auto;
   margin-top: auto;
-  color: #FCF5E5;
+  color: #fcf5e5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,12 +156,22 @@
     max-width: 288px;
   }
 
+  .profile__avatar-btn {
+    visibility: visible;
+  }
+
+  .profile__avatar-btn::after {
+    content: "Edit Avatar";
+  }
+
   .profile__avatar {
     margin: 0 0 12px;
     width: 80px;
     height: 80px;
   }
-
+  .profile__avatar-text {
+    display: none;
+  }
   .profile__name {
     font-size: 20px;
     margin-bottom: 6px;
@@ -111,5 +187,4 @@
     margin: 0;
     width: 100%;
   }
-
 }
